@@ -1,8 +1,6 @@
-const gridContainer = document.querySelector('.gridContainer');
 const grid = document.querySelector('.grid');
 const gridSizeBtn = document.querySelector('#gridSize');
 const rainbowBtn = document.querySelector('#rainbow');
-const btns = document.querySelector('.buttons')
 
 gridSizeBtn.addEventListener('click', function(e) {
     let dimensions = parseInt(prompt('Input the width of your grid'));
@@ -52,16 +50,33 @@ gridSizeBtn.addEventListener('click', function(e) {
         }
     }
 
-    grid.addEventListener('mouseover', function(e) {
+    const drawFunc = function(e) {
         if (e.target !== grid && !e.target.classList.contains('row')) {
             let opacity = Number(e.target.style.opacity);
             opacity += 0.1;
             e.target.style.opacity = String(opacity);
-            e.target.style.backgroundColor = `black`;
+            e.target.style.backgroundColor = bgColor;
         }
-    
-    })
+    }
 
+
+    let bgColor = 'black'
+
+    grid.addEventListener('mouseover', drawFunc)
+
+    rainbowBtn.addEventListener('click', function(e) {
+            grid.removeEventListener('mouseover', drawFunc)
+            
+            grid.addEventListener('mouseover', function(e) {
+                if (e.target !== grid && !e.target.classList.contains('row')) {
+                    let redValue = Math.floor(257 * Math.random());
+                    let greenValue = Math.floor(257 * Math.random());
+                    let blueValue = Math.floor(257 * Math.random());
+                    e.target.style.backgroundColor = `rgba( ${redValue}, ${greenValue}, ${blueValue}, 1)`
+                }
+            })
+
+        })
 
 })
 
