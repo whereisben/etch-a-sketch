@@ -51,6 +51,18 @@ gridSizeBtn.addEventListener('click', function(e) {
             rows[i].appendChild(cell);
         }
     }
+
+    grid.addEventListener('mouseover', function(e) {
+        if (e.target !== grid && !e.target.classList.contains('row')) {
+            let opacity = Number(e.target.style.opacity);
+            opacity += 0.1;
+            e.target.style.opacity = String(opacity);
+            e.target.style.backgroundColor = `black`;
+        }
+    
+    })
+
+
 })
 
 
