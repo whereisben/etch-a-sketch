@@ -32,11 +32,19 @@ body {
 }
 
 .grid {
-    outline: solid green;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    outline: solid rgb(102, 44, 12);
     border-radius: 16px;
     width: 800px;
     height: 800px;
-    margin: 24px
+    margin: 24px;
+    padding: 0px;
+}
+
+.row {
+    display: flex;
 }
 
 
